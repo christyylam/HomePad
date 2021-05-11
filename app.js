@@ -87,7 +87,8 @@ List.findOne({name: customListName}, function(err, foundList) {
 
 app.post("/weather", function(req, res) {
   const query = req.body.cityName;;
-  const apiKey = config.key;
+  // const apiKey = config.key;
+  const apiKey = process.env.key;
   const units = "metric";
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey+ "&units=" + units;
   https.get(url, function(response) {
@@ -160,9 +161,6 @@ app.post("/delete", function(req, res){
 });
 
 let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
 
 app.listen(port, function() {
   console.log("Server started successfully");
