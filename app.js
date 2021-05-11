@@ -7,6 +7,7 @@ const https = require("https");
 const _ = require("lodash");
 const date = require(__dirname + "/date.js");
 const day = date.getDate();
+const config = require(__dirname + "/config.js");
 
 const app = express();
 
@@ -86,7 +87,7 @@ List.findOne({name: customListName}, function(err, foundList) {
 
 app.post("/weather", function(req, res) {
   const query = req.body.cityName;;
-  const apiKey = "0d28b532d7725e6208e167c2edb05a12";
+  const apiKey = config.key;
   const units = "metric";
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey+ "&units=" + units;
   https.get(url, function(response) {

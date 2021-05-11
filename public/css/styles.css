@@ -1,6 +1,6 @@
 html {
   background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #bac7a7 50%, #f9ecec 50%);
+  background-image: -webkit-linear-gradient(65deg, #b9d7ea 50%, #f9ecec 50%);
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
@@ -16,7 +16,7 @@ h2 {
 }
 
 #weatherHeading {
-  background-color: #bac7a7;
+  background-color: #b9d7ea;
   text-align: center;
   border-radius: 5px;
   box-shadow: 5px 5px -5px rgba(0, 0, 0, 0.3);
@@ -40,7 +40,7 @@ h2 {
 }
 
 #heading {
-  background-color: #bac7a7;
+  background-color: #b9d7ea;
   text-align: center;
 }
 
@@ -82,7 +82,7 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #bac7a7;
+  background-color: #b9d7ea;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
