@@ -7,7 +7,7 @@ const https = require("https");
 const _ = require("lodash");
 const date = require(__dirname + "/date.js");
 const day = date.getDate();
-const config = require(__dirname + "/config.js");
+// const config = require(__dirname + "/config.js");
 
 const app = express();
 
