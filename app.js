@@ -7,7 +7,7 @@ const https = require("https");
 const _ = require("lodash");
 const date = require(__dirname + "/date.js");
 const day = date.getDate();
-// const config = require(__dirname + "/config.js");
+const config = require(__dirname + "/config.js");
 
 const app = express();
 
@@ -46,7 +46,6 @@ const listSchema = new mongoose.Schema({
 const List = mongoose.model("List", listSchema);
 
 app.get("/", function(req, res) {
-//finds all the items inside our items collection and renders them onto the screen
   Item.find({}, function(err, foundItems){
     if(foundItems.length === 0) {
       Item.insertMany(defaultItems, function(err) {
@@ -70,7 +69,6 @@ app.get("/:customListName", function(req, res) {
 List.findOne({name: customListName}, function(err, foundList) {
   if(!err) {
     if(!foundList) {
-      //create a new list
       const list = new List({
         name: customListName,
         items: defaultItems
@@ -78,7 +76,6 @@ List.findOne({name: customListName}, function(err, foundList) {
       list.save();
       res.redirect("/" + customListName);
     } else {
-      //do not create a new list, show an existing list instead
       res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
     }
   }
@@ -105,16 +102,13 @@ app.post("/weather", function(req, res) {
 
 app.post("/", function(req, res){
 
-//this will refer to the text that the user entered into the input when they click on the + button
   const itemName = req.body.newItem;
   const listName = req.body.list;
   const newItem = new Item({
     name: itemName
   });
 
-  // const day = date.getDate();
   if(listName === day) {
-    //this will save the newItem into collection of items
       newItem.save(function(err) {
         if (err) {
           console.log(err);
