@@ -3,11 +3,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const http = require("http");
+const https = require("https");
 const _ = require("lodash");
 const date = require(__dirname + "/date.js");
 const day = date.getDate();
-// const config = require(__dirname + "/config.js");
+//const config = require(__dirname + "/config.js");
 
 const app = express();
 
@@ -84,7 +84,7 @@ List.findOne({name: customListName}, function(err, foundList) {
 
 app.post("/weather", function(req, res) {
   const query = req.body.cityName;;
-  // const apiKey = config.key;
+  //const apiKey = config.key;
   const apiKey = process.env.key;
   const units = "metric";
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey+ "&units=" + units;
@@ -155,6 +155,9 @@ app.post("/delete", function(req, res){
 });
 
 let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
 app.listen(port, function() {
   console.log("Server started successfully");
